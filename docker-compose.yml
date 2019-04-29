@@ -10,6 +10,16 @@ services:
       - 27017:27017
     networks:
       - issue-tracker
+  issue-tracker-reverse-proxy:
+    image: traefik:1.7.9-alpine
+    container_name: issue-tracker-reverse-proxy
+    hostname: issue-tracker-reverse-proxy
+    volumes:
+      - ./traefik.toml:/etc/traefik/traefik.toml
+    ports:
+      - "8181:80"
+    networks:
+      - issue-tracker
   service-issue-tracker-backend:
     image: slavic454/service-issue-tracker-backend:0.0.2
     container_name: service-issue-tracker-backend

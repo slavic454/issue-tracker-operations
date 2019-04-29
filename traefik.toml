@@ -1,0 +1,28 @@
+defaultEntryPoints = ["http"]
+
+logLevel = "DEBUG"
+
+[entryPoints]
+  [entryPoints.http]
+    address = ":80"
+
+[file]
+
+[backends]
+  [backends.service-issue-tracker-backend]
+    [backends.service-issue-tracker-backend.servers.server1]
+       url = "http://service-issue-tracker-backend:8299"
+  [backends.service-issue-tracker-frontend]
+    [backends.service-issue-tracker-frontend.servers.server1]
+       url = "http://service-issue-tracker-frontend:80"
+   
+[frontends]
+  [frontends.service-issue-tracker-backend]
+      backend = "service-issue-tracker-backend"
+      [frontends.service-issue-tracker-backend.routes.route1]
+          rule = "PathPrefix: /api/"
+  [frontends.service-issue-tracker-frontend]
+      backend = "service-issue-tracker-frontend"
+      [frontends.frontend.routes.route1]
+          rule = "PathPrefix: /"
+  
