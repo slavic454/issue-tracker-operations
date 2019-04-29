@@ -1,6 +1,6 @@
 defaultEntryPoints = ["http"]
 
-logLevel = "DEBUG"
+logLevel = "INFO"
 
 [entryPoints]
   [entryPoints.http]
@@ -23,6 +23,6 @@ logLevel = "DEBUG"
           rule = "PathPrefix: /api/"
   [frontends.service-issue-tracker-frontend]
       backend = "service-issue-tracker-frontend"
-      [frontends.frontend.routes.route1]
+      [frontends.service-issue-tracker-frontend.routes.route1]
           rule = "PathPrefix: /"
   
