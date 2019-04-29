@@ -21,7 +21,7 @@ services:
     networks:
       - issue-tracker
   service-issue-tracker-backend:
-    image: slavic454/service-issue-tracker-backend:0.0.2
+    image: slavic454/service-issue-tracker-backend:0.0.3
     container_name: service-issue-tracker-backend
     hostname: service-issue-tracker-backend
     depends_on:
@@ -33,7 +33,7 @@ services:
     networks:
       - issue-tracker
   service-issue-tracker-frontend:
-    image: slavic454/service-issue-tracker-frontend:0.0.1
+    image: slavic454/service-issue-tracker-frontend:0.0.2
     container_name: service-issue-tracker-frontend
     hostname: service-issue-tracker-frontend
     ports:
