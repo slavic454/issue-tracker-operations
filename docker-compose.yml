@@ -1,0 +1,27 @@
+version: "3.6"
+services:
+  mongo:
+    image: mongo:4.1
+    container_name: mongo
+    hostname: mongo
+    volumes:
+      - mongo:/data/db
+    ports:
+      - 27017:27017
+    networks:
+      - issue-tracker
+  service-issue-tracker-backend:
+    image: slavic454/service-issue-tracker-backend:0.0.2
+    container_name: service-issue-tracker-backend
+    hostname: service-issue-tracker-backend
+    volumes:
+      - ./pm2.json:/pm2.json
+    ports:
+      - 8299:8299
+    networks:
+      - issue-tracker
+networks:
+  issue-tracker:
+    external: true
+volumes:
+  mongo:
